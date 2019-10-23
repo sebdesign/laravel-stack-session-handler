@@ -1,6 +1,7 @@
 language: php
 
 php:
+  - 7.2
   - 7.3
 
 env:
@@ -13,6 +14,7 @@ before_script:
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
 
 script:
+  - vendor/bin/phpstan analyse --no-progress
   - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
 
 after_script:

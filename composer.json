@@ -1,40 +1,46 @@
 {
-    "name": "spatie/:package_name",
-    "description": ":package_description",
+    "name": "sebdesign/laravel-stack-session-handler",
+    "description": "Stack multiple session handlers for Laravel",
     "keywords": [
-        "spatie",
-        ":package_name"
+        "laravel",
+        "session"
     ],
-    "homepage": "https://github.com/spatie/:package_name",
+    "homepage": "https://github.com/sebdesign/laravel-stack-session-handler",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": "https://spatie.be",
+            "name": "Sébastien Nikolaou",
+            "email": "info@sebdesign.eu",
+            "homepage": "https://sebdesign.eu",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.3"
+        "php": "^7.2",
+        "illuminate/session": "^6.0"
     },
     "require-dev": {
-        "symfony/var-dumper": "^4.3",
-        "phpunit/phpunit": "^8.2"
+        "nunomaduro/larastan": "^0.4.3",
+        "nunomaduro/phpinsights": "^1.9",
+        "orchestra/testbench": "^4.2",
+        "phpunit/phpunit": "^8.2",
+        "symfony/var-dumper": "^4.3"
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src"
+            "Sebdesign\\StackSession\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "Sebdesign\\StackSession\\Tests\\": "tests"
         }
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "insights": "./vendor/bin/phpinsights --no-interaction --min-quality=80 --min-complexity=50 --min-architecture=75 --min-style=95",
+        "phpstan": "./vendor/bin/phpstan analyse --no-progress"
     },
     "config": {
         "sort-packages": true
@@ -42,11 +48,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
-            ],
-            "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
-            }
+                "Sebdesign\\Session\\StackSessionServiceProvider"
+            ]
         }
     }
 }
